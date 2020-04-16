@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load bootstrap3 %}
+{% block title %}Delete a new book {% endblock %}
+
+
+{% block content %}
+<h1>Book Delete?</h1>
+<form  method="post">
+{% csrf_token %}
+Are you sure you want to delete this contact?
+<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Yes</button>
+<button class="btn btn-outline-success my-2 my-sm-0" type="submit"><a href="{% url 'books:book_list' %}">No</a></button>
+</form>
+
+{% endblock %}

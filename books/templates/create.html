@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load bootstrap3 %}
+{% block title %} create a book {% endblock %}
+
+
+{% block content %}
+<form method="post" class="form">
+	 {% csrf_token %}
+	{{ form|crispy }}
+<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Submit</button>
+</form>
+{% endblock %}

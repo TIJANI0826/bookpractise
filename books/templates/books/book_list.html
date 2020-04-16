@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}list of books{% endblock %}
+
+{% block content %}
+  <h1 class="page-header">Books</h1>
+  <table class="table" id="book-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Type</th>
+        <th>Publication date</th>
+        <th>Pages</th>
+        <th>Price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for book in object_list %}
+        <tr>
+          <td>{{ book.id }}</td>
+          <td>{{ book.title }}</td>
+          <td>{{ book.author }}</td>
+          <td>{{ book.get_book_type_display }}</td>
+          <td>{{ book.publication_date }}</td>
+          <td>{{ book.pages }}</td>
+          <td>{{ book.price }}</td>
+          <td>
+            
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><a  href="{% url "books:book_detail"  book.id  %}">
+            details</a>
+            </button>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><a  href="{% url "books:book_update"  book.id  %}">edit</a></button>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><a  href="{% url "books:book_delete"  book.id  %}">delete</a></button> 
+          
+          </td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="7" class="text-center bg-warning">No book</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><a href="{% url 'books:book_create' %}">Create A new Book</a></button>
+{% endblock %}

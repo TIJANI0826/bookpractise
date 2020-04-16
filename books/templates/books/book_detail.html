@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}{{object.title}}{% endblock %}
+
+{% block content %}
+<div class="container">
+	<h1><p>{{object.title.upper}}</p></h1>
+	
+	<ul class="list-group">
+		<li class="list-group-item d-flex justify-content-between align-items-center">Publication date
+			<span class="badge badge-primary badge-pill">{{object.publication_date}}</span>
+		</li>
+	  	<li class="list-group-item d-flex justify-content-between align-items-center">Author
+	    	<span class="badge badge-primary badge-pill">{{object.author}}</span>
+	  	</li>
+	  	<li class="list-group-item d-flex justify-content-between align-items-center">Price
+	    	<span class="badge badge-primary badge-pill">{{object.price}}</span>
+	  	</li>
+	  	<li class="list-group-item d-flex justify-content-between align-items-center">No of pages
+	    	<span class="badge badge-primary badge-pill">{{object.pages}}</span>
+	  	</li>
+	  	<li class="list-group-item d-flex justify-content-between align-items-center">Type Purchasable
+	    	<span class="badge badge-primary badge-pill">{{object.book_type}}</span>
+	  	</li>
+	</ul>
+	<hr>
+	<form>
+		<button class="btn btn-outline-success my-2 my-sm-0" type="submit"><a href="{% url 'books:book_list' %}">Return Home</a></button>
+	</form>
+</div>
+
+{% endblock %}
